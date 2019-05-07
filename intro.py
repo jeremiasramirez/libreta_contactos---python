@@ -146,15 +146,23 @@ def verifiedList(lists):
 	else:
 		print("La lista esta vacia")
 
+def updatePhone(lists, oldPhone, newPhone):
+	for n in lists:
+		if n == oldPhone:
+			lists.remove(n)
+			lists.append(newPhone)
 
 
-listPhone = []
+
+
+
+listPhone = ["8297510847"]
 i = 0
 val = 0
 resp = "agregar"
 
 while resp != "salir" :
-	resp = input("Quieres agregar, mostrar o eliminar: ")
+	resp = input("MOSTRAR | ACTUALIZAR | ELIMINAR | AGREGAR: ")
 
 	if resp == "mostrar":
 		verifiedList(listPhone)
@@ -170,6 +178,14 @@ while resp != "salir" :
 			removePhone(listPhone, delete);
 		else:
 			verifiedList(listPhone)
+	elif resp == "actualizar":
+		if listPhone != []:
+			oldP = input("Numero viejo: ")
+			oldNew = input("Numero nuevo: ")
+			updatePhone(listPhone, oldP, oldNew)
+		else:
+			verifiedList(listPhone)
+
 	i += 1
 
 
