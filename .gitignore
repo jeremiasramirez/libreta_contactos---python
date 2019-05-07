@@ -1,6 +1,9 @@
 __pycache__
-venv
+venv/
+.vscode/
 .idea/
-intro.py
 libr.py
+herence.py
+program.py
+test.json
 prueba.py
