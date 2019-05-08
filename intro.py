@@ -4,10 +4,11 @@
 def addPhone(val, lists):
 	k = 0
 	adTrue = False
-
+	ref = {0: True, 1: False}
 	while k < len(lists):
+
 		if val == lists[k]:
-			adTrue = True
+			adTrue = ref[0]
 		k += 1
 
 	if adTrue == True:
@@ -15,15 +16,23 @@ def addPhone(val, lists):
 	else:
 		listPhone.append(val);
 
-def showPhone(list):
-	for i in list:
-		print(i);
+# show contacts
+def showPhone(listss):
+	for lists in listss:
+		print(lists);
 	print("\n")
+
 # remove number call
 def removePhone(lists, val):
+	ref = False
 	for k in lists:
 		if k == val:
-			lists.remove(val)
+			ref = True
+	if ref == True:
+		lists.remove(val)
+		print(val, "Eliminado\n")
+	else:
+		print(val, "No encontrado.\n")
 
 # verified existence number call
 def verifiedList(lists):
@@ -35,8 +44,10 @@ def verifiedList(lists):
 	if lists != []:
 		if iterators <= 1:
 			print("\n\tListas de contactos:\n", iterators, "contacto\n")
+
 		else:
 			print("\n\tListas de contactos:\n", iterators, "contactos\n")
+
 	else:
 		print("La lista esta vacia")
 
@@ -44,14 +55,17 @@ def verifiedList(lists):
 def updatePhone(lists, oldPhone, newPhone):
 	n = 0
 	valid = False
+	ref = {0: True, 1: False}
 
 	while n < len(lists):
+
 		if lists[n] == oldPhone:
 			lists[n] = newPhone
-			valid = True
+			valid = ref[1]
+
 		n += 1
 
-	if valid == False:
+	if valid == ref[0]:
 		print("Ese numero no existe")
 
  
@@ -64,9 +78,9 @@ configs = {
 	2: "mostrar",
 	3: "eliminar",
 	4: "agregar",
-	5: "actualizar"
+	5: "actualizar",
+	6: "Agregar numero: "
 }
-
 resp = configs[3]
 
 while resp != configs[0]:
@@ -78,7 +92,7 @@ while resp != configs[0]:
 		showPhone(listPhone)
 
 	elif resp == configs[4]:
-		val = input("agregar numero: ")
+		val = input(configs[6])
 		addPhone(val, listPhone)
 
 	elif resp == configs[3]:
@@ -89,12 +103,18 @@ while resp != configs[0]:
 			verifiedList(listPhone)
 
 	elif resp == configs[5]:
+
 		if listPhone != []:
 			oldP = input("Numero viejo: ")
 			oldNew = input("Numero nuevo: ")
+
 			updatePhone(listPhone, oldP, oldNew)
+
 		else:
 			verifiedList(listPhone)
+	elif resp == configs[0]:
+		exit(0)
+		
 	configs[1]+= 1
 
 
