@@ -1,3 +1,5 @@
+from time import sleep
+
 #app number call list
 
 # add number call
@@ -12,14 +14,20 @@ def addPhone(val, lists):
 		k += 1
 
 	if adTrue == True:
-		print("\n",val, "Ya se encuentra agregado.\n\n")
+		print("\n", val, "Ya se encuentra agregado.\n\n")
 	else:
-		listPhone.append(val);
+		print("agregando..")
+		sleep(1)
+		listPhone.append(val)
+		print(val, "agregado")
 
 # show contacts
 def showPhone(listss):
+	print("Mostrado..\n")
+	sleep(1)
 	for lists in listss:
-		print(lists);
+		print(lists)
+		texts = ""
 	print("\n")
 
 # remove number call
@@ -29,6 +37,8 @@ def removePhone(lists, val):
 		if k == val:
 			ref = True
 	if ref == True:
+		print("eliminando..")
+		sleep(1)
 		lists.remove(val)
 		print(val, "Eliminado\n")
 	else:
@@ -37,9 +47,9 @@ def removePhone(lists, val):
 # verified existence number call
 def verifiedList(lists):
 	iterators = 0
- 
+
 	while iterators < len(lists):
-		iterators +=1
+		iterators += 1
 
 	if lists != []:
 		if iterators <= 1:
@@ -56,7 +66,8 @@ def updatePhone(lists, oldPhone, newPhone):
 	n = 0
 	valid = False
 	ref = {0: True, 1: False}
-
+	print("Verificando..")
+	sleep(1)
 	while n < len(lists):
 
 		if lists[n] == oldPhone:
@@ -67,9 +78,9 @@ def updatePhone(lists, oldPhone, newPhone):
 
 	if valid == ref[0]:
 		print("Ese numero no existe")
+	else:
+		print("Actualizado correctamente")
 
- 
- 
 listPhone = ["8297510847", "8092221284", "8295466271"]
 
 configs = {
@@ -98,7 +109,7 @@ while resp != configs[0]:
 	elif resp == configs[3]:
 		if listPhone != []:
 			delete = input("Numero a eliminar: ")
-			removePhone(listPhone, delete);
+			removePhone(listPhone, delete)
 		else:
 			verifiedList(listPhone)
 
