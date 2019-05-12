@@ -25,9 +25,11 @@ def addPhone(val, lists):
 def showPhone(listss):
 	print("Mostrado..\n")
 	sleep(1)
+	it = 0
+
 	for lists in listss:
-		print(lists)
-		texts = ""
+		it += 1
+		print("(",it,")", lists)
 	print("\n")
 
 # remove number call
@@ -66,17 +68,19 @@ def updatePhone(lists, oldPhone, newPhone):
 	n = 0
 	valid = False
 	ref = {0: True, 1: False}
+
 	print("Verificando..")
 	sleep(1)
+
 	while n < len(lists):
 
 		if lists[n] == oldPhone:
 			lists[n] = newPhone
-			valid = ref[1]
+			valid = ref[0]
 
 		n += 1
 
-	if valid == ref[0]:
+	if valid == ref[1]:
 		print("Ese numero no existe")
 	else:
 		print("Actualizado correctamente")
@@ -93,6 +97,8 @@ configs = {
 	6: "Agregar numero: "
 }
 resp = configs[3]
+
+
 
 while resp != configs[0]:
 	resp = input("MOSTRAR | ACTUALIZAR | ELIMINAR | AGREGAR: ")
